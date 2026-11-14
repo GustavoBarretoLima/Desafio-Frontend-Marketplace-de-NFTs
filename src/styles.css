@@ -1,0 +1,2739 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  background: #17100d;
+  color: #faf4eb;
+  font-size: 106.25%;
+}
+
+:focus-visible {
+  outline: 2px solid #e2a463;
+  outline-offset: 4px;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #332720;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: linear-gradient(90deg, transparent, rgb(250 244 235 / 10%), transparent);
+    animation: skeleton-shimmer 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes skeleton-shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+.market-header {
+  border-bottom: 1px solid #35251b;
+}
+
+.market-header-inner,
+.market-main {
+  width: min(100% - clamp(48px, 5vw, 96px), 1600px);
+  margin-inline: auto;
+}
+
+.market-header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  min-height: 64px;
+}
+
+.market-brand {
+  justify-self: start;
+  font-weight: 900;
+  letter-spacing: .17em;
+  color: #f1b27a;
+}
+
+.market-actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 16px;
+}
+
+.market-navigation a:hover,
+.market-actions a:hover {
+  color: #f1b27a;
+}
+
+.market-main {
+  padding-block: 40px 64px;
+}
+
+.home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(16px, 5vw, 72px);
+  margin-bottom: clamp(24px, 5vw, 64px);
+}
+
+.home-hero-copy {
+  display: grid;
+  justify-items: start;
+  gap: clamp(8px, 2vw, 20px);
+}
+
+.home-eyebrow,
+.home-hero h1,
+.home-cta,
+.home-catalog-title,
+.home-nft-card h3,
+.home-nft-price {
+  font-family: "Courier New", monospace;
+}
+
+.home-hero h1 {
+  max-width: 15ch;
+  font-size: clamp(1.2rem, 4.8vw, 4.25rem);
+  font-weight: 900;
+  line-height: 1.02;
+  text-transform: uppercase;
+}
+
+.home-eyebrow {
+  color: #f1b27a;
+  font-weight: 700;
+}
+
+.home-cta,
+.home-filter-fields button[type="submit"] {
+  border-radius: 6px;
+  background: #d99053;
+  color: #1b110b;
+  padding: 7px 12px;
+  font-weight: 700;
+}
+
+.home-hero-art {
+  display: block;
+  min-width: 0;
+}
+
+.home-hero-image {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.home-catalog {
+  display: grid;
+  gap: 16px 24px;
+  grid-template-areas: "title" "filters" "results";
+}
+
+.home-catalog-title {
+  grid-area: title;
+  color: #f1b27a;
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-weight: 700;
+  scroll-margin-top: 16px;
+}
+
+.home-filters {
+  grid-area: filters;
+  align-self: start;
+  display: grid;
+  gap: 16px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #261911;
+}
+
+.home-filter-fields {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.home-filter-fields input[type="search"],
+.home-filter-fields select {
+  width: 100%;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid #594031;
+  border-radius: 6px;
+  background: #1b120d;
+}
+
+.home-availability {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-availability input {
+  accent-color: #d99053;
+}
+
+.home-results {
+  grid-area: results;
+  min-width: 0;
+}
+
+.home-nft-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 2vw, 24px);
+}
+
+.home-nft-card {
+  padding: clamp(6px, 1vw, 12px);
+  border-radius: 12px;
+  background: #261911;
+  overflow-wrap: anywhere;
+}
+
+.home-nft-image {
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.home-nft-card h3 a:hover {
+  text-decoration: underline;
+}
+
+.home-nft-price {
+  color: #f1b27a;
+}
+
+@media (min-width: 640px) and (max-width: 959px) {
+  .home-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 960px) {
+  .home-catalog {
+    grid-template-columns: 200px minmax(0, 1fr);
+    grid-template-areas: "filters title" "filters results";
+  }
+
+  .home-nft-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 699px) {
+  .market-header-inner,
+  .market-main {
+    width: calc(100% - 32px);
+  }
+
+  .market-header-inner {
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    min-height: 56px;
+  }
+
+  .market-navigation {
+    display: none;
+  }
+
+  .market-main {
+    padding-top: 16px;
+  }
+
+  .home-hero {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 18px;
+    background: #2c1e12;
+    font-size: .8rem;
+  }
+
+  .home-hero-image {
+    aspect-ratio: 1;
+  }
+
+  .home-cta {
+    padding: 5px 8px;
+  }
+}
+
+.home-filter-toggle {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .home-filters {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 0;
+    background: transparent;
+  }
+
+  .home-search {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .home-search label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .home-filter-toggle {
+    display: block;
+    min-height: 44px;
+    padding-inline: 10px;
+    border: 1px solid #594031;
+    border-radius: 6px;
+    background: #261911;
+    color: #f1b27a;
+  }
+
+  .home-filter-options {
+    grid-column: 1 / -1;
+    padding: 12px;
+    border-radius: 10px;
+    background: #261911;
+  }
+
+  .home-filter-options[data-open="false"] {
+    display: none;
+  }
+}
+
+.market-mobile-home,
+.market-mobile-icon {
+  display: none;
+}
+
+@media (max-width: 699px) {
+  html {
+    scroll-padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .market-main {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .market-actions {
+    position: fixed;
+    z-index: 20;
+    inset: auto 0 0;
+    justify-self: stretch;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 4px;
+    padding: 6px max(8px, env(safe-area-inset-right, 0px))
+      calc(6px + env(safe-area-inset-bottom, 0px))
+      max(8px, env(safe-area-inset-left, 0px));
+    border-top: 1px solid #594031;
+    border-radius: 16px 16px 0 0;
+    background: #261911;
+    font-size: .875rem;
+  }
+
+  .market-actions > span {
+    display: contents;
+  }
+
+  .market-actions a,
+  .market-actions button {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding-inline: 4px;
+    text-decoration: none;
+  }
+
+  .market-actions .market-mobile-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  .market-actions a[aria-current="page"] {
+    color: #f1b27a;
+    font-weight: 700;
+  }
+
+  .market-actions:has([role="alert"]) {
+    flex-wrap: wrap;
+  }
+
+  .market-actions [role="alert"] {
+    flex-basis: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 639px) {
+  .market-home {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 8px;
+  }
+
+  .market-home .home-catalog,
+  .market-home .home-filters {
+    display: contents;
+  }
+
+  .market-home .home-search {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .market-home .home-filter-toggle {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .market-home .home-filter-options {
+    grid-row: 2;
+  }
+
+  .market-home .home-hero,
+  .market-home .home-catalog-title,
+  .market-home .home-results {
+    grid-area: auto / 1 / auto / -1;
+  }
+
+  .market-home .home-hero {
+    grid-row: 3;
+    margin-bottom: 0;
+  }
+
+  .market-home .home-catalog-title {
+    grid-row: 4;
+  }
+
+  .market-home .home-results {
+    grid-row: 5;
+  }
+}
+
+.nft-detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  margin-bottom: 10px;
+  color: #f1b27a;
+}
+
+.nft-detail-back:hover {
+  text-decoration: underline;
+}
+
+.nft-detail-layout {
+  display: grid;
+  gap: clamp(16px, 3vw, 40px);
+  align-items: start;
+}
+
+.nft-gallery {
+  display: grid;
+  min-width: 0;
+  gap: 12px;
+}
+
+.nft-gallery-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.nft-detail-info {
+  min-width: 0;
+  padding: clamp(14px, 3vw, 28px);
+  border: 1px solid #423025;
+  border-radius: 14px;
+  background: #261911;
+}
+
+.nft-detail-info h1,
+.nft-detail-price {
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+}
+
+.nft-detail-info h1 {
+  font-size: clamp(1.35rem, 3vw, 2.4rem);
+  line-height: 1.15;
+}
+
+.nft-detail-price {
+  margin-block: 8px;
+  color: #f1b27a;
+  font-size: 1.2rem;
+}
+
+.nft-purchase {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #594031;
+}
+
+.nft-purchase select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding-inline: 8px;
+  border: 1px solid #795844;
+  border-radius: 8px;
+  background: #1b120d;
+}
+
+.nft-purchase-submit,
+.nft-purchase > p {
+  grid-column: 1 / -1;
+}
+
+.nft-purchase-submit {
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #d99053;
+  color: #1b110b;
+  font-weight: 700;
+}
+
+.nft-purchase-submit:disabled {
+  opacity: .55;
+}
+
+@media (min-width: 768px) {
+  .nft-detail-layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  }
+
+  .nft-gallery:has(.nft-gallery-thumbnails) {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .nft-gallery:has(.nft-gallery-thumbnails) .nft-gallery-preview {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .nft-gallery-thumbnails {
+    grid-column: 1;
+    grid-row: 1;
+    flex-direction: column;
+  }
+}
+
+.cart-title {
+  margin-bottom: 20px;
+  font: 700 clamp(1.4rem, 3vw, 2.25rem)/1.15 "Courier New", monospace;
+}
+
+.cart-breadcrumb {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.cart-breadcrumb a:hover, .cart-continue:hover {
+  text-decoration: underline;
+}
+
+.cart-layout {
+  display: grid;
+  align-items: start;
+  gap: 26px;
+}
+
+.cart-items {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  margin-top: -8px;
+}
+
+.cart-items th {
+  padding: 0 8px 9px;
+  border-bottom: 1px solid #4a2d1c;
+  text-align: left;
+  font-weight: 600;
+}
+
+.cart-items td {
+  padding: 0 8px;
+  background: #241711;
+}
+
+.cart-items :is(th, td):first-child {
+  padding-left: 0;
+}
+
+.cart-item-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.cart-item-info small {
+  display: block;
+  margin-top: 3px;
+  color: #c4a47c;
+}
+
+.cart-item-image {
+  width: clamp(56px, 6vw, 72px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.cart-item-price, .cart-item-total {
+  white-space: nowrap;
+  color: #d8b995;
+}
+
+.cart-item-total {
+  color: #efa664;
+  font-weight: 700;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.cart-item-controls button, .cart-item-action button {
+  display: inline-grid;
+  place-items: center;
+  min-width: 30px;
+  min-height: 36px;
+  cursor: pointer;
+}
+
+.cart-item-controls button {
+  border-radius: 999px;
+  background: #d99053;
+  color: #1b110b;
+}
+
+.cart-item-action button {
+  color: #c4a47c;
+}
+
+.cart-item-action button:hover {
+  color: #efa664;
+}
+
+.cart-layout button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.cart-summary {
+  min-width: 0;
+}
+
+.cart-summary-title {
+  padding-bottom: 9px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #4a2d1c;
+  font-weight: 700;
+}
+
+.cart-coupon {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  row-gap: 6px;
+}
+
+.cart-coupon label {
+  grid-column: 1 / -1;
+  font-weight: 600;
+}
+
+.cart-coupon input {
+  min-width: 0;
+  min-height: 40px;
+  padding-inline: 8px;
+  border: 1px solid #5b3923;
+  border-radius: 4px 0 0 4px;
+  background: #241711;
+}
+
+.cart-coupon input::placeholder {
+  color: #bb996f;
+}
+
+.cart-coupon button, .cart-summary .cart-checkout {
+  min-height: 40px;
+  background: #d99053;
+  color: #1b110b;
+  font-weight: 700;
+}
+
+.cart-coupon button {
+  padding-inline: 12px;
+  border-radius: 0 4px 4px 0;
+}
+
+.cart-summary .cart-checkout {
+  width: 100%;
+  margin-top: 16px;
+  border-radius: 4px;
+  white-space: normal;
+  text-align: center;
+}
+
+.cart-coupon button:hover:not(:disabled), .cart-summary .cart-checkout:hover {
+  background: #f1b27a;
+}
+
+.cart-continue {
+  display: block;
+  margin-top: 10px;
+  color: #efa664;
+  text-align: center;
+}
+
+.cart-totals {
+  font-size: 0.9rem;
+  align-items: baseline;
+}
+
+.cart-totals dd {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.cart-totals > :nth-last-child(-n + 2) {
+  margin-top: 12px;
+}
+
+.cart-totals small {
+  display: block;
+  color: #c4a47c;
+}
+
+.market-cart .home-guide {
+  margin-top: clamp(36px, 7vw, 96px);
+}
+
+@media (min-width: 960px) {
+  .cart-layout {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+    gap: clamp(30px, 6vw, 84px);
+  }
+}
+
+@media (max-width: 620px) {
+  .cart-items, .cart-items tbody {
+    display: block;
+  }
+
+  .cart-items thead {
+    position: absolute;
+    clip-path: inset(50%);
+  }
+
+  .cart-items tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 8px 10px;
+    margin-top: 10px;
+    padding: 10px;
+    background: #241711;
+  }
+
+  .cart-items td {
+    padding: 0;
+    background: transparent;
+  }
+
+  .cart-item-art {
+    grid-column: 1 / 3;
+  }
+
+  .cart-item-action {
+    grid-area: 1 / 3;
+    justify-self: end;
+  }
+
+  .cart-item-controls button, .cart-item-action button {
+    min-width: 36px;
+    min-height: 44px;
+  }
+
+  .cart-item-total {
+    justify-self: end;
+  }
+}
+
+.checkout-layout,
+.checkout-order {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+  align-content: start;
+}
+
+.market-checkout .cart-breadcrumb { margin-bottom: 28px; }
+.market-checkout .home-guide { margin-top: clamp(40px, 8vw, 96px); }
+
+.market-checkout .product-footer > small { background: #0d0907; color: inherit; }
+.market-checkout .product-footer nav { padding-block: 28px 34px; }
+.market-checkout .product-footer .home-footer-brand { min-height: 88px; align-items: center; }
+.market-checkout .home-guide li + li { border-inline-start: 1px solid #d99053; }
+.market-checkout .home-guide li:first-child { border-inline-start: 0; }
+@media (min-width: 960px) {
+  .market-checkout .home-guide ul { grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.35fr); }
+}
+
+.checkout-layout h2 {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.checkout-profile-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+}
+
+.checkout-profile-fields label, .checkout-note {
+  display: grid;
+  min-width: 0;
+  gap: 5px;
+}
+
+.checkout-profile-fields input, .checkout-note textarea,
+.market-checkout .checkout-wallet-fields select.checkout-wallet-choice {
+  width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid #4a2d1c;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.checkout-profile-fields label:has(> .sr-only) { align-self: end; }
+.checkout-profile-fields input[readonly], .checkout-profile-fields input::placeholder { color: #c4a47c; }
+.checkout-note textarea { resize: vertical; }
+.checkout-note { width: min(100%, 350px); }
+.checkout-profile-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-block: 20px; color: #efa664; }
+.checkout-profile-links a:hover, .checkout-promo:hover { text-decoration: underline; }
+.checkout-promo { display: block; text-align: center; }
+
+.checkout-item-head {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #4a2d1c;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+.checkout-items { display: grid; gap: 8px; }
+
+.checkout-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 8px;
+  padding-right: 9px;
+  background: #241711;
+}
+
+.checkout-item img { width: clamp(44px, 5.8vw, 70px); border-radius: 5px; }
+.checkout-item h3 { font-weight: 700; }
+.checkout-item p { color: #c4a47c; font-size: .8rem; }
+.checkout-item-quantity { color: #c4a47c; white-space: nowrap; font-size: .8rem; }
+.checkout-item > strong { white-space: nowrap; color: #efa664; }
+.checkout-order .cart-totals > :nth-last-child(-n + 2) {
+  border-top: 1px solid #4a2d1c;
+  padding-top: 10px;
+}
+
+.checkout-wallet-fields {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.market-checkout .checkout-wallet h2 { text-align: center; }
+.market-checkout .checkout-wallet-fields button[data-slot="button"] {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 5px;
+  background: #d99053;
+  color: #1b110b;
+  white-space: normal;
+}
+
+@media (min-width: 960px) {
+  .checkout-layout {
+    grid-template-columns: minmax(0, 1.88fr) minmax(320px, 1fr);
+    gap: clamp(24px, 2.5vw, 40px);
+    align-items: start;
+  }
+}
+
+@media (max-width: 639px) {
+  .checkout-profile-fields { grid-template-columns: minmax(0, 1fr); }
+  .checkout-item { gap: 5px; }
+}
+
+.order-page {
+  display: grid;
+  gap: 12px;
+  width: min(100%, 640px);
+  margin-inline: auto;
+}
+
+.order-panel {
+  display: grid;
+  min-width: 0;
+  gap: 14px;
+  padding: clamp(14px, 3vw, 28px);
+  border: 1px solid #423025;
+  border-radius: 14px;
+  background: #261911;
+}
+
+.order-reference {
+  color: #d8bc9f;
+  overflow-wrap: anywhere;
+  font-size: .875rem;
+}
+
+.order-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.order-actions button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #795844;
+  border-radius: 8px;
+}
+
+.order-actions button:first-child {
+  background: #d99053;
+  color: #1b110b;
+  font-weight: 700;
+}
+
+.order-actions button:disabled {
+  opacity: .55;
+}
+
+.order-receipt {
+  width: min(100%, 578px);
+  margin-inline: auto;
+  background: #251712;
+  border-bottom: 9px solid #d99053;
+  font-family: "Courier New", monospace;
+}
+
+.receipt-header {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 16px 34px 18px;
+  text-align: center;
+  color: #cdb08b;
+}
+
+.receipt-header h1 { font-size: 1rem; font-weight: 700; }
+.receipt-header svg, .receipt-close { color: #d99053; }
+.receipt-close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  font-size: 1.35rem;
+}
+
+.receipt-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, auto));
+  padding: 14px clamp(12px, 5vw, 36px);
+  border-block: 1px solid #d99053;
+  color: #cdb08b;
+  font-size: .875rem;
+}
+
+.receipt-meta > div { padding-inline: 12px; overflow-wrap: anywhere; }
+.receipt-meta > div:first-child { padding-inline-start: 0; }
+.receipt-meta > div + div { border-inline-start: 1px solid #a46a3a; }
+.receipt-meta dt { font-weight: 700; }
+.receipt-body { padding: 18px clamp(12px, 6vw, 44px) 42px; }
+.receipt-body h2 { font-weight: 700; margin-bottom: 6px; }
+.receipt-body table { width: 100%; border-collapse: collapse; }
+.receipt-body th { text-align: left; border-bottom: 1px solid #563929; padding-bottom: 7px; }
+.receipt-body td { padding-top: 12px; }
+.receipt-body :is(td, th):nth-child(2) { text-align: center; }
+.receipt-body :is(td, th):last-child { text-align: right; white-space: nowrap; }
+.receipt-body td:nth-child(2) { color: #cdb08b; white-space: nowrap; }
+.receipt-body td:last-child { color: #efa664; font-weight: 700; }
+.receipt-nft { display: flex; align-items: center; gap: 10px; overflow-wrap: anywhere; }
+.receipt-nft img { width: clamp(40px, 12vw, 68px); height: auto; aspect-ratio: 1; border-radius: 8px; }
+.receipt-nft small { display: block; color: #cdb08b; }
+.receipt-totals {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 0 0 8px clamp(0px, 25%, 168px);
+  border-bottom: 1px solid #563929;
+}
+.receipt-totals dd { text-align: right; }
+.receipt-totals :nth-last-child(-n + 2) { font-weight: 700; }
+.receipt-totals dd:last-child { color: #efa664; }
+.receipt-message, .receipt-note { margin-top: 12px; color: #cdb08b; text-align: center; overflow-wrap: anywhere; }
+.receipt-action {
+  display: table;
+  margin: 18px auto 0;
+  padding: 12px 16px;
+  border-radius: 5px;
+  background: #d99053;
+  color: #1b110b;
+  font-weight: 700;
+  text-align: center;
+}
+.receipt-action:not(:disabled):hover { background: #efa664; }
+.receipt-action:disabled { cursor: not-allowed; }
+
+@media (max-width: 480px) {
+  .receipt-meta { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .receipt-meta > div:nth-child(odd) { border: 0; padding-inline-start: 0; }
+  .receipt-body table { font-size: .8rem; }
+  .receipt-nft { gap: 5px; }
+}
+
+.account-auth {
+  width: min(100%, 420px);
+  margin: clamp(12px, 5vw, 64px) auto 0;
+}
+
+.account-auth-brand,
+.account-auth h1 {
+  text-align: center;
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+}
+
+.account-auth-brand {
+  margin-bottom: clamp(24px, 6vw, 48px);
+  color: #f1b27a;
+  font-size: 1.75rem;
+  letter-spacing: .17em;
+}
+
+.account-auth h1 {
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+}
+
+.account-auth-form {
+  display: grid;
+  gap: 8px;
+}
+
+.account-auth-form label {
+  color: #e7c6a7;
+  font-size: .875rem;
+}
+
+.account-auth-form input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #795844;
+  border-radius: 8px;
+  background: #21160f;
+}
+
+.account-auth-form > input {
+  margin-bottom: 8px;
+}
+
+.account-auth-password {
+  position: relative;
+}
+
+.account-auth-form .account-auth-password input {
+  padding-inline-end: 52px;
+}
+
+.account-auth-password button {
+  position: absolute;
+  inset: 0 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  color: #f1b27a;
+}
+
+.account-auth-submit {
+  min-height: 44px;
+  margin-top: 10px;
+  border-radius: 8px;
+  background: #d99053;
+  color: #1b110b;
+  font-weight: 700;
+}
+
+.account-auth button:disabled {
+  opacity: .55;
+}
+
+.account-auth-switch {
+  display: block;
+  margin: 14px auto 0;
+}
+
+.profile-layout,
+.profile-content {
+  display: grid;
+  min-width: 0;
+  gap: 16px;
+}
+
+.profile-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-self: start;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #261911;
+}
+
+.profile-navigation a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: #f1b27a;
+}
+
+.profile-navigation a:hover {
+  text-decoration: underline;
+}
+
+.profile-panel {
+  display: grid;
+  min-width: 0;
+  gap: 10px;
+  padding: clamp(12px, 2vw, 22px);
+  border: 1px solid #423025;
+  border-radius: 12px;
+  background: #261911;
+}
+
+.profile-panel[id],
+.profile-panel h2[id] {
+  scroll-margin-top: 16px;
+}
+
+.profile-input {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid #795844;
+  border-radius: 8px;
+  background: #1b120d;
+}
+
+.profile-submit {
+  justify-self: start;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #d99053;
+  color: #1b110b;
+  font-weight: 700;
+}
+
+.profile-submit:disabled {
+  opacity: .55;
+}
+
+@media (min-width: 960px) {
+  .profile-layout {
+    grid-template-columns: 200px minmax(0, 1fr);
+    max-width: 960px;
+  }
+
+  .profile-navigation {
+    flex-direction: column;
+  }
+}
+
+.checkout-wallet-fields select.checkout-wallet-choice {
+  padding: 10px 12px;
+  border: 1px solid #795844;
+  border-radius: 10px;
+  background: #2d1e15;
+}
+
+@media (max-width: 639px) {
+  .cart-item-controls {
+    gap: 4px;
+    font-size: .875rem;
+  }
+
+  .cart-item-controls button {
+    padding-inline: 6px;
+  }
+
+  .checkout-wallet-fields > button[data-slot="button"] {
+    width: 100%;
+    min-height: 44px;
+    border-radius: 999px;
+    background: #d99053;
+  }
+}
+
+.checkout-wallet-options, .checkout-wallet-options fieldset {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.checkout-wallet-options legend { margin-bottom: 6px; }
+
+.checkout-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 45px;
+  padding: 7px 11px;
+  border: 1px solid #4a2d1c;
+  border-radius: 4px;
+}
+
+.checkout-option:has(:checked), .checkout-option:hover { border-color: #d99053; }
+.checkout-option input { accent-color: #d99053; }
+.checkout-option small { display: block; color: #c4a47c; font-size: .75rem; }
+
+.checkout-wallet-ring {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  border: 1px solid #d99053;
+  border-radius: 50%;
+}
+
+.checkout-wallet-brands {
+  padding: 4px 7px;
+  border-radius: 4px;
+  background: #382210;
+  color: #efa664;
+  font-size: .65rem;
+  text-transform: uppercase;
+}
+
+.catalog-views {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #594031;
+}
+
+.catalog-views button {
+  min-height: 44px;
+  border-bottom: 2px solid transparent;
+  font: 700 .875rem "Courier New", monospace;
+}
+
+.catalog-views button[aria-pressed="true"] {
+  border-bottom-color: #d99053;
+  color: #f1b27a;
+}
+
+.nft-description,
+.nft-attributes {
+  margin-top: 14px;
+  color: #e7c6a7;
+}
+
+.nft-attributes div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.nft-attributes dt {
+  font-weight: 700;
+}
+
+.home-hero-description {
+  max-width: 64ch;
+  color: #d8bc9f;
+  font-family: "Courier New", monospace;
+  line-height: 1.65;
+}
+
+.home-cta {
+  text-transform: uppercase;
+}
+
+.home-filter-heading {
+  font: 700 1.1rem "Courier New", monospace;
+}
+
+.home-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-top: clamp(32px, 6vw, 80px);
+  padding: 20px;
+  border-top: 1px solid #594031;
+  background: #261911;
+  font-family: "Courier New", monospace;
+}
+
+.home-footer strong {
+  color: #f1b27a;
+  letter-spacing: .17em;
+}
+
+.home-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.home-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 960px) {
+  .home-hero {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 56px);
+    min-height: 480px;
+  }
+
+  .home-hero h1 {
+    max-width: 21ch;
+    font-size: clamp(2rem, 3.35vw, 3rem);
+    line-height: 1.42;
+  }
+
+  .home-catalog {
+    grid-template-columns: minmax(200px, 24%) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 639px) {
+  .home-filter-heading {
+    display: none;
+  }
+
+  .home-footer {
+    grid-area: 6 / 1 / auto / -1;
+  }
+}
+
+.home-collections {
+  display: grid;
+  gap: clamp(24px, 5vw, 64px);
+  margin-top: clamp(28px, 6vw, 80px);
+}
+
+.home-collections h2 {
+  margin-bottom: 14px;
+  font: 700 1.25rem "Courier New", monospace;
+}
+
+.home-promos,
+.home-collection-grid,
+.home-guide ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.home-promo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #261911;
+}
+
+.home-promo img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.home-promo div,
+.home-footer nav div {
+  display: grid;
+  gap: 6px;
+}
+
+.home-promo .home-cta {
+  justify-self: start;
+  margin-top: 6px;
+}
+
+.home-guide {
+  padding: 20px;
+  background: #261911;
+  border-top: 1px solid #594031;
+}
+
+.home-guide li {
+  padding-inline-start: 12px;
+  border-inline-start: 2px solid #d99053;
+}
+
+.home-guide p,
+.home-footer p {
+  color: #e7c6a7;
+}
+
+@media (min-width: 960px) {
+  .home-collection-grid,
+  .home-guide ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .home-collections {
+    grid-area: 6 / 1 / auto / -1;
+  }
+
+  .home-promos,
+  .home-guide ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-footer {
+    grid-row: 7;
+  }
+}
+
+.market-navigation {
+  align-items: center;
+  gap: clamp(10px, 2vw, 30px);
+  font-family: "Courier New", monospace;
+}
+
+@media (min-width: 700px) {
+  .market-navigation {
+    display: flex;
+  }
+}
+
+.home-collection-filters {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.home-collection-filters button {
+  min-height: 36px;
+  padding: 4px 8px;
+  text-align: left;
+  color: #e7c6a7;
+}
+
+.home-collection-filters button:hover {
+  background: #34231a;
+}
+
+.home-collection-filters button[aria-pressed="true"] {
+  background: #423025;
+  color: #f1b27a;
+}
+
+.home-sidebar-featured {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .home-catalog {
+    grid-template-areas: "filters title" "filters results" "featured results";
+    grid-template-rows: auto min-content auto;
+    align-items: start;
+  }
+
+  .home-sidebar-featured {
+    display: grid;
+    grid-area: featured;
+    gap: 8px;
+    padding: 12px;
+    background: #261911;
+  }
+
+  .home-sidebar-featured h2 {
+    color: #f1b27a;
+    font: 700 1.15rem "Courier New", monospace;
+    text-transform: uppercase;
+  }
+
+  .home-sidebar-featured img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+}
+
+.home-collection-filters button {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.home-price-filter {
+  margin-block: 10px 16px;
+}
+
+.home-price-filter input {
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  padding-inline: 8px;
+  border: 1px solid #594031;
+  border-radius: 6px;
+  background: #1b120d;
+}
+
+.home-journal,
+.home-guide,
+.market-home .home-catalog {
+  font-family: "Courier New", monospace;
+}
+
+.home-journal > h2,
+.home-journal > p {
+  text-align: center;
+}
+
+.home-journal > h2 {
+  font-size: 1.45rem;
+}
+
+.home-journal p {
+  color: #e7c6a7;
+  font-size: calc(.975rem + 4px);
+}
+
+.home-journal ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 24px);
+  margin-top: 24px;
+}
+
+.home-journal li {
+  overflow: hidden;
+  border-radius: 6px;
+  background: #251813;
+}
+
+.home-journal img {
+  width: 100%;
+  aspect-ratio: 268 / 195;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.home-journal li div {
+  display: grid;
+  gap: 6px;
+  padding: 12px 16px 16px;
+  font-size: calc(1.075rem + 4px);
+  line-height: 1.45;
+}
+
+.home-journal li p {
+  font-size: calc(.925rem + 4px);
+}
+
+.home-journal-meta span {
+  margin-inline: 4px;
+}
+
+.home-journal summary {
+  width: fit-content;
+  list-style: none;
+  cursor: pointer;
+  color: #f1a55e;
+  font-size: calc(.925rem + 4px);
+  font-weight: 700;
+}
+
+.home-journal summary::-webkit-details-marker {
+  display: none;
+}
+
+.home-journal details[open] p {
+  margin-top: 8px;
+}
+
+.home-guide li b {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  aspect-ratio: 1;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  color: #1b110b;
+  background: #d99053;
+}
+
+.home-guide li strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.home-price-sliders {
+  display: grid;
+  align-items: center;
+  min-height: 28px;
+  isolation: isolate;
+}
+
+.home-price-sliders::before {
+  content: "";
+  grid-area: 1 / 1;
+  height: 3px;
+  margin-inline: 7px;
+  background: #d99053;
+}
+
+.home-price-sliders input[type="range"] {
+  grid-area: 1 / 1;
+  min-height: 28px;
+  padding: 0;
+  border: 0;
+  appearance: none;
+  background: transparent;
+  pointer-events: none;
+}
+
+.home-price-sliders input::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #261911;
+  border-radius: 50%;
+  background: #d99053;
+  pointer-events: auto;
+}
+
+.home-price-sliders input::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #261911;
+  border-radius: 50%;
+  background: #d99053;
+  pointer-events: auto;
+}
+
+.home-sidebar-featured p {
+  color: #fff1df;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+@media (min-width: 960px) {
+  .home-hero-art {
+    width: min(100%, 450px);
+    justify-self: end;
+  }
+
+  .home-hero-image {
+    aspect-ratio: 1;
+    border-radius: 24px;
+  }
+
+  .home-journal ul,
+  .home-guide ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .home-promo div {
+    justify-items: end;
+    text-align: right;
+  }
+
+  .home-promo .home-cta {
+    justify-self: end;
+  }
+}
+
+.home-footer {
+  display: block;
+  padding: 0;
+}
+
+.home-footer-brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 32px;
+  padding: 16px 24px;
+  background: #382210;
+}
+
+.home-footer nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 20px 24px;
+}
+
+.home-footer nav > div {
+  align-content: start;
+}
+
+.home-footer > small {
+  display: block;
+  padding: 12px;
+  background: #17100d;
+  text-align: center;
+}
+
+@media (min-width: 960px) {
+  .home-footer nav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .market-navigation a:first-child[aria-current="page"] {
+    color: #f1b27a;
+    text-decoration: underline;
+    text-underline-offset: 12px;
+  }
+}
+
+.home-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 6px;
+  margin-top: 24px;
+}
+
+.home-pagination button {
+  min-width: 36px;
+  min-height: 36px;
+  border: 1px solid #594031;
+  border-radius: 4px;
+}
+
+.home-pagination button[aria-current="page"] {
+  background: #d99053;
+  color: #1b110b;
+}
+
+@media (min-width: 960px) {
+  .market-home .home-catalog .home-nft-grid {
+    column-gap: 32px;
+    row-gap: 44px;
+  }
+
+  .market-home .home-catalog .home-nft-card {
+    padding: 0;
+    background: transparent;
+  }
+
+  .market-home .home-catalog .home-nft-image {
+    aspect-ratio: .86;
+    padding: 12px 4px;
+    border-radius: 0;
+    background: #261911;
+    object-fit: contain;
+  }
+
+  .market-home .home-catalog .home-nft-card h3 {
+    font-weight: 400;
+  }
+}
+
+.home-newsletter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-bottom: 10px;
+}
+
+.home-newsletter input {
+  min-width: 0;
+  padding: 8px;
+  background: #382210;
+}
+
+.home-newsletter button {
+  padding: 8px;
+  background: #d99053;
+  color: #17100d;
+  font-weight: 700;
+}
+
+.home-catalog-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-bottom: 16px;
+}
+
+.home-catalog-toolbar .catalog-views {
+  margin-bottom: 0;
+}
+
+.home-catalog-sort {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: .875rem;
+}
+
+.home-catalog-sort select {
+  max-width: 100%;
+  background: #17100d;
+}
+
+.home-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: 8px 22px;
+}
+
+.home-social span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #d99053;
+  border-radius: 6px;
+  color: #d99053;
+}
+
+.home-social svg {
+  width: 18px;
+  height: 18px;
+}
+
+.home-footer nav .home-wallet-title {
+  font-size: 1.1875rem;
+  line-height: 1.25;
+  overflow-wrap: normal;
+}
+
+.home-wallet-label {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 5px;
+  width: max-content;
+  padding: 5px 7px;
+  border: 1px solid #5b3923;
+  border-radius: 6px;
+  color: #efa664;
+  background: #382210;
+  font-size: calc(0.625rem + 4px);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.home-wallet-label li + li::before {
+  content: "\00b7";
+  margin-inline-end: 6px;
+}
+
+.home-wallet-label li {
+  white-space: nowrap;
+}
+
+@media (max-width: 740px) {
+  .home-footer-social {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  .home-wallet-label {
+    width: fit-content;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 960px) {
+  .home-guide {
+    padding: 32px 32px 16px;
+  }
+
+  .home-guide li b {
+    width: 74px;
+    font-size: 1.4rem;
+  }
+
+  .home-footer {
+    margin-top: 0;
+  }
+
+  .home-footer nav {
+    gap: 24px 32px;
+    padding: 30px 32px;
+  }
+
+  .home-footer nav strong {
+    color: inherit;
+    letter-spacing: normal;
+    font-size: 1.1rem;
+  }
+
+  .home-footer-brand {
+    min-height: 88px;
+    padding-inline: 32px;
+  }
+
+  .home-sidebar-featured {
+    padding: 16px 0 0;
+    background: #261911;
+  }
+
+  .home-sidebar-featured h2 {
+    padding-inline: 18px;
+    color: #f1a55e;
+  }
+
+  .home-sidebar-featured img {
+    aspect-ratio: 310 / 365;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  .home-sidebar-featured a span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .market-home .home-catalog .home-nft-image {
+    border-radius: 14px;
+  }
+}
+
+.home-previous-price {
+  margin-inline-start: 8px;
+  color: #c0a27c;
+  font-weight: 400;
+}
+
+.nft-product {
+  font-family: "Courier New", monospace;
+}
+
+.nft-product .nft-detail-info {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.nft-product .nft-detail-info h1 {
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+.nft-product .nft-gallery-preview {
+  padding: clamp(8px, 1.4vw, 20px);
+  background: #261911;
+}
+
+.nft-product-details,
+.nft-related {
+  margin-top: clamp(34px, 7vw, 96px);
+}
+
+.nft-product-details h2,
+.nft-related h2 {
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #594031;
+  color: #f1b27a;
+  font-weight: 700;
+}
+
+.nft-product-details p {
+  margin-bottom: 16px;
+  color: #e7c6a7;
+  line-height: 1.65;
+}
+
+.nft-related ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  gap: 14px 24px;
+}
+
+.nft-related li {
+  min-width: 0;
+}
+
+.nft-related img {
+  width: 100%;
+  aspect-ratio: 0.86;
+  margin-bottom: 8px;
+  padding: 4px;
+  background: #261911;
+  object-fit: contain;
+}
+
+.nft-related a:hover span {
+  text-decoration: underline;
+}
+
+.nft-product .home-guide {
+  margin-top: clamp(36px, 7vw, 96px);
+}
+
+@media (min-width: 960px) {
+  .nft-product .nft-detail-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr);
+    gap: 32px;
+  }
+}
+
+.nft-product-price,
+.nft-detail-tabs,
+.nft-quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nft-product-price {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #594031;
+}
+
+.nft-product-price button span,
+.nft-detail-tabs button[aria-pressed="true"] {
+  color: #f1b27a;
+}
+
+.nft-detail-tabs {
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #594031;
+}
+
+.nft-detail-tabs button {
+  min-height: 44px;
+  border-bottom: 2px solid transparent;
+}
+
+.nft-detail-tabs button[aria-pressed="true"] {
+  border-color: #d99053;
+}
+
+.nft-product-metadata div {
+  margin-bottom: 14px;
+}
+
+.nft-product-metadata dd {
+  color: #e7c6a7;
+}
+
+.nft-quantity-controls {
+  grid-column: 1 / -1;
+}
+
+.nft-quantity-controls button {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 999px;
+  background: #d99053;
+  color: #1b110b;
+  font-size: 1.25rem;
+}
+
+.nft-quantity-controls button:disabled {
+  opacity: .55;
+}
+
+.nft-quantity-controls select {
+  width: auto;
+  min-width: 3.75rem;
+  color: #fff1df;
+}
+
+.nft-purchase-feedback {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.nft-purchase-feedback a {
+  color: #f1b27a;
+  text-decoration: underline;
+}
+
+.nft-share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 3px;
+  row-gap: 4px;
+  margin-top: 10px;
+}
+
+.nft-share strong {
+  margin-inline-end: 4px;
+  line-height: 1.25;
+}
+
+.nft-share a {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 32px;
+  border-radius: 4px;
+  color: #faf4eb;
+}
+
+.nft-share a:hover {
+  background: #261911;
+  color: #f1b27a;
+}
+
+.nft-share svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.nft-product-metadata dt {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+@media (min-width: 960px) {
+  .nft-product .nft-gallery-thumbnails img {
+    width: clamp(64px, 7vw, 96px);
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .nft-product .nft-purchase {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+
+  .nft-product .nft-purchase > select {
+    grid-column: 2 / -1;
+  }
+
+  .nft-product .nft-quantity-controls,
+  .nft-product .nft-purchase-submit {
+    grid-column: auto;
+  }
+
+  .nft-product .nft-purchase > :is(div, a):last-of-type {
+    margin-top: 0;
+  }
+}
+
+.nft-edition-options {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.nft-edition-options button {
+  min-height: 36px;
+  padding-inline: 10px;
+  border: 1px solid #594031;
+  border-radius: 999px;
+}
+
+.nft-edition-options button[aria-pressed="true"] {
+  border-color: #d99053;
+  color: #f1b27a;
+}
+
+.nft-edition-options button:disabled {
+  opacity: .55;
+}
+
+.auth-panel {
+  position: relative;
+  width: min(100%, 500px);
+  padding: 44px clamp(18px, 6vw, 80px) 64px;
+  border-radius: 6px;
+  border-bottom: 10px solid #d99053;
+  background: #261911;
+  font-family: "Courier New", monospace;
+}
+
+.auth-close {
+  position: absolute;
+  inset: 8px 14px auto auto;
+  color: #d99053;
+  font-size: 24px;
+}
+
+.auth-modes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.auth-modes button + button {
+  border-left: 1px solid #795844;
+  padding-left: 10px;
+}
+
+.auth-modes button[aria-pressed="true"],
+.auth-recovery {
+  color: #f1a55e;
+}
+
+.auth-intro {
+  margin: 34px 0 22px;
+  text-align: center;
+  font-size: .875rem;
+}
+
+.auth-panel .account-auth-form > input {
+  margin: 0;
+}
+
+.auth-recovery {
+  justify-self: end;
+}
+
+.auth-social {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.auth-social button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 40px;
+  border: 1px solid #594031;
+  border-radius: 5px;
+  color: #e7c6a7;
+}
+
+.auth-social button svg {
+  flex: none;
+}
+
+.profile-layout {
+  max-width: none;
+  font-family: "Courier New", monospace;
+}
+
+.profile-navigation {
+  gap: 0;
+  padding: 12px 0;
+  border-radius: 0;
+}
+
+.profile-navigation strong,
+.profile-navigation a {
+  padding-inline: 12px;
+}
+
+.profile-navigation a[aria-current] {
+  box-shadow: inset 5px 0 #d99053;
+}
+
+.profile-content > .profile-panel,
+.profile-content > #senha-do-perfil {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.profile-data-form > h2,
+.wallet-profile-heading h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.profile-data-form > h2,
+.profile-data-form > button,
+.profile-data-form > p,
+.wallet-profile-heading {
+  grid-column: 1 / -1;
+}
+
+.profile-content .profile-input {
+  display: block;
+  min-height: 40px;
+  border-color: #594031;
+  border-radius: 3px;
+  background: transparent;
+}
+
+.profile-content select.profile-input {
+  background: #17100d;
+}
+
+#senha-do-perfil {
+  max-width: 417px;
+}
+
+.wallet-profile-form {
+  display: grid;
+  gap: 20px;
+}
+
+.wallet-profile-form + .wallet-profile-form {
+  margin-top: 20px;
+}
+
+.wallet-profile-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+}
+
+.wallet-profile-heading p {
+  width: 100%;
+  color: #e7c6a7;
+}
+
+.wallet-profile-heading button {
+  color: #f1a55e;
+}
+
+@media (min-width: 960px) {
+  .profile-layout {
+    grid-template-columns: minmax(200px, 310px) minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .profile-data-form,
+  .wallet-profile-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .wallet-secondary-field {
+    align-self: end;
+  }
+}
+
+.market-auth-dialog {
+  width: min(500px, calc(100% - 24px));
+  max-height: calc(100dvh - 24px);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  background: transparent;
+  color: inherit;
+}
+
+.market-auth-dialog::backdrop {
+  background: rgb(0 0 0 / 12%);
+}
+
+.market-auth-dialog .auth-panel {
+  width: 100%;
+  margin: 0;
+}
+
+.market-auth-dialog[open] {
+  animation: auth-enter 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .market-auth-dialog[open] { animation: none; }
+}
+
+@keyframes auth-enter {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (min-width: 960px) {
+  .market-main:has(> .market-home) {
+    padding-top: 12px;
+  }
+
+  .market-home .home-hero {
+    min-height: 0;
+    margin-bottom: clamp(32px, 3.2vw, 48px);
+  }
+
+  .market-home .home-hero-copy {
+    padding-inline-start: clamp(20px, 3.3vw, 48px);
+  }
+
+  .market-home .home-hero-art {
+    width: min(100%, clamp(350px, 31.25vw, 500px));
+  }
+
+  .market-home .home-catalog {
+    column-gap: clamp(24px, 3.3vw, 48px);
+    grid-template-columns: minmax(200px, 26%) minmax(0, 1fr);
+  }
+
+  .market-home .home-filters {
+    border-radius: 0;
+  }
+}
+
+.profile-content .profile-password-field input {
+  padding-inline-end: 52px;
+}
+
+#senha-do-perfil > div label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+#senha-do-perfil {
+  gap: 18px;
+}
+
+.profile-avatar-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.profile-avatar-placeholder {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 50%;
+  color: #f1b27a;
+  background: #382210;
+}
+
+.profile-avatar-placeholder svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.profile-avatar-upload {
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: #17100d;
+  background: #d99053;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.profile-avatar-upload:focus-within {
+  outline: 2px solid #f1b27a;
+  outline-offset: 3px;
+}
+
+.profile-navigation {
+  display: grid;
+  padding: 12px 0 0;
+}
+
+.profile-navigation strong {
+  padding-bottom: 8px;
+  font-size: 1.125rem;
+}
+
+.profile-navigation :is(a, button) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 6px 16px;
+  color: #f1a55e;
+  text-align: left;
+}
+
+.profile-navigation a[aria-current] {
+  box-shadow: none;
+}
+
+.profile-navigation a[data-selected="true"] {
+  box-shadow: inset 5px 0 #d99053;
+  background: #302017;
+}
+
+.profile-navigation svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+
+.profile-navigation button:disabled {
+  opacity: .65;
+}
+
+.profile-navigation .profile-logout {
+  border-top: 1px solid #594031;
+  font-weight: 700;
+}
+
+.market-header-cart {
+  position: relative;
+}
+
+.market-cart-count {
+  position: absolute;
+  top: 0;
+  right: -5px;
+  min-width: 15px;
+  padding-inline: 3px;
+  border-radius: 999px;
+  background: #d99053;
+  color: #17100d;
+  text-align: center;
+  font: 700 11px/15px "Courier New", monospace;
+}
+
+.market-header-search {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  .market-header {
+    border-bottom: 0;
+  }
+
+  .market-header-inner {
+    border-bottom: 1px solid #493023;
+    font-family: "Courier New", monospace;
+  }
+
+  .market-brand {
+    color: inherit;
+  }
+
+  .market-navigation a {
+    display: flex;
+    align-items: center;
+    min-height: 64px;
+    border-bottom: 2px solid transparent;
+  }
+
+  .market-header:has(+ .market-main > :is(.market-cart, .market-checkout)) .market-navigation a:nth-child(2),
+  .market-navigation a:first-child[aria-current="page"] {
+    border-bottom-color: #d99053;
+    color: #f1a55e;
+    text-decoration: none;
+  }
+
+  .market-actions :is(.market-header-search, .market-header-cart, .market-header-login) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+  }
+
+  .market-actions :is(.market-header-search, .market-header-cart, .market-header-login) svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  .market-cart-label {
+    display: none;
+  }
+
+  .market-actions .market-header-login {
+    gap: 5px;
+    padding-inline: 10px;
+    border-radius: 5px;
+    background: #d99053;
+    color: #17100d;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 699px) {
+  .market-actions .market-header-search {
+    display: none;
+  }
+}
+
+.wallet-profile-form {
+  display: block;
+}
+
+.wallet-profile-heading {
+  margin-bottom: 28px;
+}
+
+.wallet-profile-fields:not([hidden]) {
+  display: grid;
+  gap: 20px 28px;
+  min-width: 0;
+}
+
+.wallet-profile-fields > button {
+  justify-self: start;
+}
+
+.wallet-ens-field {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+}
+
+.wallet-ens-field span {
+  display: grid;
+  place-items: center;
+  padding-inline: 12px;
+  border: 1px solid #594031;
+  border-radius: 3px;
+}
+
+.wallet-required {
+  color: #f39170;
+}
+
+@media (min-width: 960px) {
+  .wallet-profile-fields:not([hidden]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 28px;
+  }
+}
+
+.product-footer {
+  margin-top: 0;
+  background: #251712;
+  font-size: calc(.9375rem + 4px);
+  line-height: 1.5;
+}
+
+.product-footer .home-footer-brand {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 24px;
+  background: #362211;
+  overflow-wrap: anywhere;
+}
+
+.product-footer .home-footer-brand :is(strong, p) {
+  color: inherit;
+}
+
+.product-footer .home-footer-brand p {
+  max-width: 27ch;
+}
+
+.product-footer nav > div {
+  min-width: 0;
+}
+
+.product-footer nav strong {
+  color: inherit;
+  letter-spacing: normal;
+  font-size: calc(1.1rem + 4px);
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 960px) {
+  .product-footer .home-footer-brand,
+  .product-footer nav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 32px;
+    padding-inline: 32px;
+  }
+}
+
+@media (min-width: 960px) {
+  .product-footer nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(max-content, 1fr);
+  }
+}
+
+.nft-related-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.nft-related-dots button {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.nft-related-dots button::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 1px solid #d99053;
+  border-radius: 50%;
+}
+
+.nft-related-dots button[aria-pressed="true"]::before {
+  background: #d99053;
+}
